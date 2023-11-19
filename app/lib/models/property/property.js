@@ -79,8 +79,8 @@ const propertySchema = new mongoose.Schema({
   },
   // property is available date
   availableDate: {
-    type: String,
-    required: true,
+    type: Date,
+    default: Date.now
   },
   // property area in square meters
   propertyTotalArea: {
@@ -92,13 +92,13 @@ const propertySchema = new mongoose.Schema({
     required: true,
   },
   // where the property is located for google maps map
-  location: {
-    type: {
-      type: String,
-      default: "Point",
-    },
-    coordinates: [Number],
-  },
+  // location: {
+  //   type: {
+  //     type: String,
+  //     default: "Point",
+  //   },
+  //   coordinates: [Number],
+  // },
   // property video url for embeding youtube video in the property page
   video: {
     type: String,
@@ -113,5 +113,7 @@ const propertySchema = new mongoose.Schema({
   ],
 });
 
-export const Property =
+const Property =
   mongoose.models.Property || mongoose.model("Property", propertySchema);
+
+export default Property;
